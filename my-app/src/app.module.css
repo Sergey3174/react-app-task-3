@@ -1,0 +1,90 @@
+
+.container {
+	background-color: rgb(29, 29, 73);
+	text-align: center;
+	max-width: fit-content;
+	margin: 0 auto;
+	padding: 20px;
+	align-items: center;
+	margin-top: 10vh;
+	border-radius: 10px;
+}
+
+.display {
+	background: rgb(212, 212, 212);
+	min-height: 100px;
+	max-width: 48vh;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	display: flex;
+	justify-content: right;
+	align-items: end;
+	word-break: break-all;
+}
+
+.displayInfo{
+	margin-right: 10px;
+	margin-bottom: 0;
+}
+
+.keyboard {
+	display: flex;
+}
+
+.numpad {
+	width: 35vh;
+	height: auto;
+	display: flex;
+}
+
+ul {
+	display: flex;
+	background-color: rgb(216, 216, 216);
+	padding: 0;
+	flex-wrap: wrap;
+	border-radius: 10px;
+	align-items: center;
+	justify-content: center;
+}
+
+li{
+	list-style-type: none;
+}
+.numBtn{
+	display: flex;
+	background-color: orange;
+	width: 10vh;
+	height: 8vh;
+	border-radius: 15%;
+	margin: 5px;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	font-size: 28px;
+}
+
+.btnPlus{
+	background-color: green;
+}
+
+.btnMinus{
+	background-color: red;
+}
+
+
+.operatorPad {
+	padding-left: 10px;
+}
+
+.operatorPad ul {
+	flex-direction: column;
+}
+
+.numBtn:hover{
+	background-color: rgb(255, 218, 151);
+}
+
+
+.result {
+	color: green;
+}

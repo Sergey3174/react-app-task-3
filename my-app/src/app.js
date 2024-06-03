@@ -26,19 +26,20 @@ export const App = () => {
 	const [operator, setOperator] = useState('');
 	const [operand2, setOperand2] = useState('');
 
-	const addNum = (event) => {
+	const addNum = (num) => {
+		console.log(num);
 		if (operator === '') {
-			setOperand1((value) => value + event.target.textContent);
+			setOperand1((value) => value + num);
 		} else if (operator === '=') {
-			setOperand1(event.target.textContent);
+			setOperand1(num);
 			setOperator('');
 		} else {
-			setOperand2((value) => value + event.target.textContent);
+			setOperand2((value) => value + num);
 		}
 	};
 
-	const addOperator = (event) => {
-		if (event.target.textContent === '=') {
+	const addOperator = (sign) => {
+		if (sign === '=') {
 			setOperand1(
 				operator === '+'
 					? Number(operand1) + Number(operand2)
@@ -46,26 +47,22 @@ export const App = () => {
 			);
 			setOperand2('');
 			setOperator('=');
-		} else if (event.target.textContent === 'C') {
+		} else if (sign === 'C') {
 			setOperand1('');
 			setOperand2('');
 			setOperator('');
-		} else if (event.target.textContent === '-' && operand1 === '') {
+		} else if (sign === '-' && operand1 === '') {
 			setOperand1('-');
-		} else if (event.target.textContent === '+' && operand1 === '') {
-		} else if (
-			(event.target.textContent === '+' || event.target.textContent === '-') &&
-			operand1 !== '' &&
-			operand2 !== ''
-		) {
+		} else if (sign === '+' && operand1 === '') {
+		} else if ((sign === '+' || sign === '-') && operand1 !== '' && operand2 !== '') {
 			setOperand1(
 				operator === '+'
 					? Number(operand1) + Number(operand2)
 					: Number(operand1) - Number(operand2),
 			);
 			setOperand2('');
-			setOperator(event.target.textContent);
-		} else setOperator(event.target.textContent);
+			setOperator(sign);
+		} else setOperator(sign);
 	};
 
 	return (
@@ -86,7 +83,10 @@ export const App = () => {
 					<ul>
 						{NUMS.map(({ id, btn }) => (
 							<li key={id}>
-								<button className={styles.numBtn} onClick={addNum}>
+								<button
+									className={styles.numBtn}
+									onClick={() => addNum(btn)}
+								>
 									{btn}
 								</button>
 							</li>
@@ -105,7 +105,7 @@ export const App = () => {
 										' ' +
 										(btn === '-' ? styles.btnMinus : null)
 									}
-									onClick={addOperator}
+									onClick={() => addOperator(btn)}
 								>
 									{btn}
 								</button>
